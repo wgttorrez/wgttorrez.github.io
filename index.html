@@ -75,9 +75,9 @@ footer a{margin-right:1rem}
 
 <main>
 <div class="hero" aria-roledescription="carrusel" aria-label="Series destacadas">
-  <div class="slide on" style="background-image:url(images/hero-1.jpg),linear-gradient(160deg,#0c0c0c,#4a4a48 60%,#d9d3c4)"><small>Mercado · Mediodía</small><h1>Mediodía</h1><a class="btn" href="#galerias">Ver serie</a></div>
-  <div class="slide" style="background-image:url(images/hero-2.jpg),linear-gradient(170deg,#161616,#5b5b58 55%,#c7c7c2)"><small>Metro · Hora punta</small><h1>Hora punta</h1><a class="btn" href="#galerias">Ver serie</a></div>
-  <div class="slide" style="background-image:url(images/hero-3.jpg),linear-gradient(155deg,#0a0a0a,#2f3438 55%,#e0b341)"><small>Esquina · Lluvia</small><h1>Neón mojado</h1><a class="btn" href="#galerias">Ver serie</a></div>
+  <div class="slide on" style="background-image:url(images/hero-1.jpg),linear-gradient(160deg,#0c0c0c,#4a4a48 60%,#d9d3c4)"><small>Plaza · Última luz</small><h1>Sombras largas</h1><a class="btn" href="#galerias">Ver serie</a></div>
+  <div class="slide" style="background-image:url(images/hero-2.jpg),linear-gradient(170deg,#161616,#5b5b58 55%,#c7c7c2)"><small>Mirador · Atardecer</small><h1>Silueta</h1><a class="btn" href="#galerias">Ver serie</a></div>
+  <div class="slide" style="background-image:url(images/hero-3.jpg),linear-gradient(155deg,#0a0a0a,#2f3438 55%,#e0b341)"><small>Viaducto · Tarde</small><h1>El puente</h1><a class="btn" href="#galerias">Ver serie</a></div>
   <div class="dots" id="dots"></div>
 </div>
 
@@ -114,13 +114,13 @@ footer a{margin-right:1rem}
 <script>
 var G=[
 ["Sombras largas","Luz","Marzo 2026","160deg,#0c0c0c,#c9c4b6"],
-["Esperando el bus","Gente","Febrero 2026","170deg,#1a1a1a,#8d8d88"],
-["Escaleras","Geometría","Enero 2026","155deg,#222,#e6e6e2"],
-["Neón mojado","Noche","Diciembre 2025","150deg,#080808,#2f3438 60%,#e0b341"],
-["Mercado","Gente","Noviembre 2025","165deg,#2a2a28,#b8b3a6"],
-["Reflejos","Luz","Octubre 2025","160deg,#111,#6d7276"],
-["Cruces","Geometría","Septiembre 2025","170deg,#1d1d1d,#a9a9a4"],
-["Última función","Noche","Agosto 2025","150deg,#0b0b0b,#4a4a48"]
+["Siluetas","Gente","Febrero 2026","170deg,#1a1a1a,#8d8d88"],
+["Puentes","Geometría","Enero 2026","155deg,#222,#e6e6e2"],
+["Crepúsculo","Noche","Diciembre 2025","150deg,#080808,#2f3438 60%,#e0b341"],
+["Esperando el bus","Gente","Noviembre 2025","165deg,#2a2a28,#b8b3a6"],
+["Contraluz","Luz","Octubre 2025","160deg,#111,#6d7276"],
+["Escaleras","Geometría","Septiembre 2025","170deg,#1d1d1d,#a9a9a4"],
+["Hora azul","Noche","Agosto 2025","150deg,#0b0b0b,#4a4a48"]
 ];
 var cont=["Todas"].concat(G.map(function(g){return g[1]}).filter(function(v,i,a){return a.indexOf(v)===i}));
 var grid=document.getElementById("grid"),fl=document.getElementById("filters");
