@@ -1,0 +1,4 @@
+Pon aqui tus fotos con estos nombres exactos:
+hero-1.jpg, hero-2.jpg, hero-3.jpg (portada, 2000 px de ancho)
+serie-1.jpg ... serie-8.jpg (tarjetas de las series, 1200 px de ancho)
+Si un archivo no existe, la pagina muestra el degradado de color.
