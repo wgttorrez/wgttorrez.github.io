@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mirada Abierta · Fotografía callejera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ebebe8;--ink:#141414;--mute:#5c5c5a;--line:#c8c8c4;--accent:#8a6200;--card:#dcdcd8;
+--font:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111110;--ink:#ecece8;--mute:#9d9d98;--line:#2e2e2c;--accent:#e0b341;--card:#1c1c1b}}
+:root[data-theme="dark"]{--bg:#111110;--ink:#ecece8;--mute:#9d9d98;--line:#2e2e2c;--accent:#e0b341;--card:#1c1c1b}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 1.05rem/1.6 var(--font)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;
+padding:calc(14px + env(safe-area-inset-top,0px)) 5vw 14px;color:#fff;mix-blend-mode:normal;
+background:linear-gradient(#0008,#0000)}
+header b{font-weight:800;font-size:1.15rem;letter-spacing:.01em}
+nav{display:flex;gap:1.4rem;font-size:.95rem}
+nav a{text-decoration:none;opacity:.9}nav a:hover{opacity:1;text-decoration:underline}
+.hero{position:relative;height:100svh;min-height:520px;overflow:hidden;color:#fff}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5vw 12vh;
+opacity:0;transition:opacity .9s ease;background-size:cover;background-position:center}
+.slide.on{opacity:1}
+.slide::before{content:"";position:absolute;inset:0;background:linear-gradient(#0000 40%,#000a)}
+.slide>*{position:relative}
+.slide small{font-size:1rem;opacity:.85}
+.slide h1{margin:.1em 0 .3em;font-weight:800;font-size:clamp(3rem,13vw,10rem);line-height:.9;letter-spacing:-.03em}
+.btn{display:inline-block;align-self:flex-start;padding:.7rem 1.4rem;border:1.5px solid #fff;border-radius:99px;
+color:#fff;text-decoration:none;font-weight:500;transition:background .2s,color .2s}
+.btn:hover{background:#fff;color:#111}
+.dots{position:absolute;right:5vw;bottom:5vh;display:flex;gap:.6rem}
+.dots button{width:44px;height:44px;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.dots button::after{content:"";width:34px;height:3px;background:#fff6;border-radius:2px}
+.dots button[aria-current="true"]::after{background:#fff}
+section{padding:12vh 5vw}
+h2{font-weight:800;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.02em;margin:0 0 1.5rem;line-height:1.05}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.filters button{font:inherit;font-size:.95rem;padding:.45rem 1.1rem;border:1.5px solid var(--line);border-radius:99px;
+background:none;color:var(--ink);cursor:pointer;min-height:44px}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:1.2rem}
+.card{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
+padding:1.1rem;color:#fff;text-decoration:none;background-size:cover;background-position:center}
+.card::before{content:"";position:absolute;inset:0;background:linear-gradient(#0000 50%,#0009);transition:opacity .3s}
+.card:hover::before{opacity:.6}
+.card>*{position:relative}.card b{font-size:1.4rem;font-weight:800}.card span{font-size:.9rem;opacity:.85}
+.card[hidden]{display:none}
+.about{display:grid;gap:3rem;grid-template-columns:1fr;border-top:1px solid var(--line)}
+@media(min-width:800px){.about{grid-template-columns:5fr 6fr;align-items:center}}
+.portrait{aspect-ratio:1/1;border-radius:4px;background:linear-gradient(145deg,#37606a,#d7a46a)}
+.about p{max-width:60ch;color:var(--mute)}
+.stats{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:2rem}
+.stats div{font-size:.95rem;color:var(--mute)}.stats strong{display:block;font-size:2.4rem;font-weight:800;color:var(--ink);line-height:1}
+.contact{border-top:1px solid var(--line)}
+.contact a.mail{font-size:clamp(1.4rem,4vw,2.6rem);font-weight:500;color:var(--accent)}
+footer{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;padding:2rem 5vw calc(2rem + env(safe-area-inset-bottom,0px));
+border-top:1px solid var(--line);color:var(--mute);font-size:.9rem}
+footer a{margin-right:1rem}
+@media(max-width:560px){nav{gap:.9rem;font-size:.85rem}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <b>Mirada Abierta</b>
+  <nav aria-label="Principal"><a href="#galerias">Series</a><a href="#sobre-mi">Sobre mí</a><a href="#contacto">Contacto</a></nav>
+</header>
+
+<main>
+<div class="hero" aria-roledescription="carrusel" aria-label="Series destacadas">
+  <div class="slide on" style="background-image:url(images/hero-1.jpg),linear-gradient(160deg,#0c0c0c,#4a4a48 60%,#d9d3c4)"><small>Plaza · Última luz</small><h1>Sombras largas</h1><a class="btn" href="#galerias">Ver serie</a></div>
+  <div class="slide" style="background-image:url(images/hero-2.jpg),linear-gradient(170deg,#161616,#5b5b58 55%,#c7c7c2)"><small>Mirador · Atardecer</small><h1>Silueta</h1><a class="btn" href="#galerias">Ver serie</a></div>
+  <div class="slide" style="background-image:url(images/hero-3.jpg),linear-gradient(155deg,#0a0a0a,#2f3438 55%,#e0b341)"><small>Viaducto · Tarde</small><h1>El puente</h1><a class="btn" href="#galerias">Ver serie</a></div>
+  <div class="dots" id="dots"></div>
+</div>
+
+<section id="galerias">
+  <h2>Series</h2>
+  <div class="filters" id="filters" role="group" aria-label="Filtrar por tema"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="about" id="sobre-mi">
+  <div class="portrait" role="img" aria-label="Espacio para tu retrato"></div>
+  <div>
+    <h2>Sobre mí</h2>
+    <p>Soy fotógrafo callejero. Camino sin rumbo fijo con una cámara pequeña, esperando el instante en que la luz, un gesto y el fondo coinciden durante un segundo. Publico una serie nueva cada mes.</p>
+    <p>Reemplaza este texto con tu propia presentación: de dónde eres, qué buscas en la calle y qué tipo de proyectos aceptas.</p>
+    <div class="stats">
+      <div><strong>24</strong>series</div><div><strong>1.800</strong>fotografías</div><div><strong>12</strong>ciudades</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <h2>¿Trabajamos juntos?</h2>
+  <p>Encargos, impresiones y colaboraciones.</p>
+  <a class="mail" href="mailto:hola@tudominio.com">hola@tudominio.com</a>
+</section>
+</main>
+
+<footer>
+  <span>© 2026 Tu Nombre</span>
+  <span><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">RSS</a></span>
+</footer>
+
+<script>
+var G=[
+["Sombras largas","Luz","Marzo 2026","160deg,#0c0c0c,#c9c4b6"],
+["Siluetas","Gente","Febrero 2026","170deg,#1a1a1a,#8d8d88"],
+["Puentes","Geometría","Enero 2026","155deg,#222,#e6e6e2"],
+["Crepúsculo","Noche","Diciembre 2025","150deg,#080808,#2f3438 60%,#e0b341"],
+["Esperando el bus","Gente","Noviembre 2025","165deg,#2a2a28,#b8b3a6"],
+["Contraluz","Luz","Octubre 2025","160deg,#111,#6d7276"],
+["Escaleras","Geometría","Septiembre 2025","170deg,#1d1d1d,#a9a9a4"],
+["Hora azul","Noche","Agosto 2025","150deg,#0b0b0b,#4a4a48"]
+];
+var cont=["Todas"].concat(G.map(function(g){return g[1]}).filter(function(v,i,a){return a.indexOf(v)===i}));
+var grid=document.getElementById("grid"),fl=document.getElementById("filters");
+grid.innerHTML=G.map(function(g,i){return '<a class="card" href="#" data-c="'+g[1]+'" style="background-image:url(images/serie-'+(i+1)+'.jpg),linear-gradient('+g[3]+')"><b>'+g[0]+'</b><span>'+g[2]+'</span></a>'}).join("");
+cont.forEach(function(c,i){var b=document.createElement("button");b.textContent=c;b.setAttribute("aria-pressed",i===0);
+b.onclick=function(){[].forEach.call(fl.children,function(x){x.setAttribute("aria-pressed",x===b)});
+[].forEach.call(grid.children,function(k){k.hidden=c!=="Todas"&&k.dataset.c!==c})};fl.appendChild(b)});
+var s=document.querySelectorAll(".slide"),d=document.getElementById("dots"),n=0,t;
+function go(i){n=i;[].forEach.call(s,function(x,j){x.classList.toggle("on",j===i)});
+[].forEach.call(d.children,function(x,j){x.setAttribute("aria-current",j===i)})}
+[].forEach.call(s,function(x,i){var b=document.createElement("button");b.setAttribute("aria-label","Ir a la diapositiva "+(i+1));
+b.onclick=function(){go(i);clearInterval(t)};d.appendChild(b)});
+go(0);
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches)t=setInterval(function(){go((n+1)%s.length)},5500);
+</script>
+</body>
+</html>
